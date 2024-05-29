@@ -2,14 +2,17 @@
 import axios from "axios"
 import myMovieList from '../store/MovieContent.js';
 import PopularMovie from "./PopularMovie.vue";
-import TopRatedMovie from  "./TopRatedMovie.vue";
+import AppHeader from "./AppHeader.vue";
 import SearchMovieTab from "./SearchMovieTab.vue";
+
+
+
 
 export default {
   components: {
    PopularMovie,
-   TopRatedMovie,
-    SearchMovieTab
+   AppHeader,
+   SearchMovieTab
    
   },
   data() {
@@ -121,26 +124,46 @@ export default {
 </script>
 
 <template>
-    <!-- section di search Work in Progress -->
-    <input type="text" v-model="myMovieList.userSearch">
-    <button @click="searchMovie" @key.upenter="searchMovie">CERCA</button>
-    <section class="container d-flex overflow-y-auto " style="max-height: 300px;">
-        <SearchMovieTab v-for="movie in myMovieList.movieSearch" :movies="movie"/> 
-        <SearchMovieTab v-for="movie in myMovieList.tvSeriesSearch" :movies="movie"/> 
-    </section>
-    <h1>Popular</h1>
-    <section class="container d-flex overflow-y-auto myHeight">
-        <PopularMovie v-for="movie in myMovieList.moviePopular" :movies="movie"/>
-    </section>
-    <h1>Top Rated Movies</h1>
-    <section class="container d-flex overflow-y-auto myHeight">
-        <TopRatedMovie v-for="movie in myMovieList.movieTop" :movies="movie" /> 
+    <section style="height:calc(90vh - 24px);  overflow: auto;">
+
+        <!-- section di search Work in Progress -->
+        <!-- <experiment @enthis.searchMovie /> -->
+        <div class="input-group p-4">
+
+            <input type="text" class="form-control" placeholder="Search.." v-model="myMovieList.userSearch" @keyup.enter="searchMovie">
+            <button class="btn btn-outline-secondary" type="button" @click="searchMovie">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        <section class="d-flex overflow-y-auto myHeight" >
+            <PopularMovie v-for="movie in myMovieList.movieSearch" :movies="movie"/> 
+            <SearchMovieTab v-for="movie in myMovieList.tvSeriesSearch" :movies="movie"/> 
+        </section>
+        <h1 class="p-3">Popular</h1>
+        <section class="d-flex overflow-y-auto myHeight">
+            <PopularMovie v-for="movie in myMovieList.moviePopular" :movies="movie"/>
+        </section>
+        <h1 class="p-3">Top Rated Movies</h1>
+        <section class="d-flex overflow-y-auto myHeight">
+            <PopularMovie v-for="movie in myMovieList.movieTop" :movies="movie" /> 
+        </section>
     </section>
 </template>
 
 <style scoped>
-.myHeight{
-    height:300px;
+section::-webkit-scrollbar {
+height: 8px;
+width: 5px;
+}
+section::-webkit-scrollbar-track {
+background-color: rgba(204, 204, 204, 0.5);
+box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+border-radius: 10px;
+margin: 1.5rem 2rem;
+}
+section::-webkit-scrollbar-thumb {
+background-color: rgb(30, 31, 31) ;
+border-radius: 10px;
 }
 
 </style>
