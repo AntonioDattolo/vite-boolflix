@@ -1,22 +1,18 @@
 <script>
 import axios from "axios"
+import myMovieList from '../store/MovieContent.js';
 export default {
   components: {
    
   },
   data() {
     return {
+        myMovieList,
        
 
     }
   },
   methods: {
-//      axios.get(options.url , options.headers ).then((result) => {
-//         console.log(result.data)
-    
-//     })
-//    }
-
     getMovie(){
         const options = {
             method: 'GET',
@@ -31,20 +27,20 @@ export default {
         axios
         .request(options)
         .then(function (response) {
-            console.log(response.data);
+            console.log(response.data, "risultato chiamata");
+            myMovieList.movie = response.data.results
+            console.log(myMovieList.movie , "array di film")
+            console.log(myMovieList.movie[0].original_title, "primo film dell'array")
         })
         .catch(function (error) {
             console.error(error);
         });
     }
 
-
- 
-
-
   
   },
   mounted() {
+    this.getMovie()
 
   }
 }
@@ -53,7 +49,9 @@ export default {
 </script>
 
 <template>
-  {{getMovie()}}
+  <div v-for="movie in myMovieList.movie">{{ movie.original_title }}
+    <img :src="`https://image.tmdb.org/t/p/w200` + movie.poster_path" alt="">
+  </div>
 </template>
 
 <style scoped>
