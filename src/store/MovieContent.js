@@ -1,5 +1,7 @@
 import { reactive } from 'vue';
 let myMovieList = reactive({
-    movie:[]
+    moviePopular:[],
+    movieTop:[],
+    movieSearc:[]
 })
 export default myMovieList
