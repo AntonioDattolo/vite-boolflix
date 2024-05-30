@@ -21,8 +21,18 @@ export default {
     chose(img,title,vote,preview){
 			myMovieList.userSelect = img
       myMovieList.userTitle = title
-      myMovieList.userVote = vote
       myMovieList.userPreview = preview
+      if(vote.toFixed(2)/2 > 0.5){
+        document.getElementById("star").innerHTML = `<i class="fa-solid fa-star"></i>`
+      }if(vote.toFixed(2)/2 > 1.5){
+        document.getElementById("star").innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>`
+      }if(vote.toFixed(2)/2 > 2.5){
+        document.getElementById("star").innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>`
+      }if(vote.toFixed(2)/2 > 3.5){
+        document.getElementById("star").innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>`
+      }if(vote.toFixed(2)/2 > 4){
+        document.getElementById("star").innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>`
+      }
 			console.log(img , title , vote)
 		},
     magic(){
@@ -30,7 +40,14 @@ export default {
       console.log("premuto magic", myMovieList.magic)
       return myMovieList.magic
       
-    }
+    },
+    // getStar(){
+    //     if(userVote > 5){
+    //         myMovieList.userVote = `<i class="fa-solid fa-star"></i>`
+    //         console.log/(myMovieList.userVote)
+    //         return myMovieList.userVote
+    //     }
+    // }
      
    },
   // mounted: {

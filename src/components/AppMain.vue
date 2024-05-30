@@ -66,7 +66,7 @@ export default {
             console.error(error);
         });
     },
-      searchMovie() {
+    searchMovie() {
           const options = {
               method: 'GET',
               url: 'https://api.themoviedb.org/3/search/movie',
@@ -109,7 +109,8 @@ export default {
         .catch(function (error) {
             console.error(error);
         });
-      },
+    },
+
       
 
 
@@ -132,7 +133,7 @@ export default {
             <div class="d-flex" style="position: relative; top: -350px;width: 100%;" :class="myMovieList.magic">
                 <div class="col-5 mx-5">
                     <h1>{{ myMovieList.userTitle }}</h1>
-                    <h5>{{ myMovieList.userVote}}</h5>
+                    <h5 id="star">{{ myMovieList.userVote}}</h5>
                     <p style="height: 130px;">{{ myMovieList.userPreview }}</p>
                     <h6 style="font-size: 12px; background-color: red;display: inline-block; padding: 0.5rem 0.9rem; border-radius: 18px; margin: 0 .8rem;">
                         <i class="fa-solid fa-play"> Watch</i>
@@ -174,35 +175,27 @@ export default {
 
 <style scoped>
 img{
-    object-fit:cover;
-    object-position: top;
-    width: 100vw;
-    height: 55vh;
-    z-index :1;
-   
-    
+object-fit:cover;
+object-position: top;
+width: 100vw;
+height: 100%;
+z-index :1;  
 }
 section::-webkit-scrollbar {
 height: 8px;
 width: 5px;
-
-
-
-
-
 }
 section::-webkit-scrollbar-track {
 background-color: unset;
 box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 border-radius: 10px;
 margin: 1.5rem 2rem;
-
-
 }
 section::-webkit-scrollbar-thumb {
 background-color: rgb(255, 3, 3) ;
 border-radius: 10px;
-
 }
-
+#star{
+    color: gold;
+}
 </style>
