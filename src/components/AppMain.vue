@@ -35,10 +35,10 @@ export default {
         axios
         .request(options)
         .then(function (response) {
-            console.log(response.data, "risultato chiamata");
+            // console.log(response.data, "risultato chiamata");
             myMovieList.moviePopular = response.data.results
-            console.log(myMovieList.moviePopular , "array di film popular")
-            console.log(myMovieList.moviePopular[0].original_title, "primo film dell'array")
+            // console.log(myMovieList.moviePopular , "array di film popular")
+            // console.log(myMovieList.moviePopular[0].original_title, "primo film dell'array")
         })
         .catch(function (error) {
             console.error(error);
@@ -57,10 +57,10 @@ export default {
         axios
         .request(options)
         .then(function (response) {
-            console.log(response.data, "risultato chiamata");
+            // console.log(response.data, "risultato chiamata");
             myMovieList.movieTop = response.data.results
-            console.log(myMovieList.movieTop , "array di film top")
-            console.log(myMovieList.movieTop[0].original_title, "primo film dell'array")
+            // console.log(myMovieList.movieTop , "array di film top")
+            // console.log(myMovieList.movieTop[0].original_title, "primo film dell'array")
         })
         .catch(function (error) {
             console.error(error);
@@ -89,26 +89,26 @@ export default {
             console.error(error);
         });
 
-          const options2 = {
-              method: 'GET',
-              url: 'https://api.themoviedb.org/3/search/tv',
-              params: { query: myMovieList.userSearch, include_adult: 'false', language: 'en-US', page: '1' },
-              headers: {
-                  accept: 'application/json',
-                  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1M2U3ZDU1NGFiZTM1OTQ3NDcwNWY5N2MyYjYyOWFhMSIsInN1YiI6IjY2NTc0MjFkNGVlMGI4OGE0ZGVmMWUxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VIslYAY7USQiSPdEPQQi4IHes40Pky43Df5Kkk-UVu8'
-              }
-          };
-          axios
-        .request(options2)
-        .then(function (response) {
-            console.log(response.data, "risultato chiamata cerca");
-            myMovieList.tvSeriesSearch = response.data.results
-            console.log(myMovieList.tvSeriesSearch , "array di SerieTV cercati")
-            console.log(myMovieList.tvSeriesSearch[0].original_title, "primo film dell'array")
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
+        const options2 = {
+            method: 'GET',
+            url: 'https://api.themoviedb.org/3/search/tv',
+            params: { query: myMovieList.userSearch, include_adult: 'false', language: 'en-US', page: '1' },
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1M2U3ZDU1NGFiZTM1OTQ3NDcwNWY5N2MyYjYyOWFhMSIsInN1YiI6IjY2NTc0MjFkNGVlMGI4OGE0ZGVmMWUxNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VIslYAY7USQiSPdEPQQi4IHes40Pky43Df5Kkk-UVu8'
+            }
+        };
+        axios
+            .request(options2)
+            .then(function (response) {
+                console.log(response.data, "risultato chiamata cerca");
+                myMovieList.tvSeriesSearch = response.data.results
+                console.log(myMovieList.tvSeriesSearch, "array di SerieTV cercati")
+                console.log(myMovieList.tvSeriesSearch[0].original_name, "primo film dell'array")
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
     },
 
       
@@ -133,7 +133,13 @@ export default {
             <div class="d-flex" style="position: relative; top: -350px;width: 100%;" :class="myMovieList.magic">
                 <div class="col-5 mx-5">
                     <h1>{{ myMovieList.userTitle }}</h1>
-                    <h5 id="star">{{ myMovieList.userVote}}</h5>
+                    <h5 id="star">
+                        <span v-if="myMovieList.userVote >= 1"><i class="fa-solid fa-star"></i></span>
+                        <span v-if="myMovieList.userVote >= 2"><i class="fa-solid fa-star"></i></span>
+                        <span v-if="myMovieList.userVote >= 3"><i class="fa-solid fa-star"></i></span>
+                        <span v-if="myMovieList.userVote >= 4"><i class="fa-solid fa-star"></i></span>
+                        <span v-if="myMovieList.userVote >= 5"><i class="fa-solid fa-star"></i></span>
+                    </h5>
                     <p style="height: 130px;">{{ myMovieList.userPreview }}</p>
                     <h6 style="font-size: 12px; background-color: red;display: inline-block; padding: 0.5rem 0.9rem; border-radius: 18px; margin: 0 .8rem;">
                         <i class="fa-solid fa-play"> Watch</i>
@@ -151,7 +157,6 @@ export default {
         <!-- section di search Work in Progress -->
         <!-- <experiment @enthis.searchMovie /> -->
         <div class="input-group p-4">
-
             <input type="text" class="form-control" placeholder="Search.." v-model="myMovieList.userSearch"
                 @keyup.enter="searchMovie">
             <button class="btn btn-outline-secondary" type="button" @click="searchMovie">

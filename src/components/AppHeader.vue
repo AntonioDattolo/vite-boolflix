@@ -2,17 +2,12 @@
 
 export default {
   data() {
-    return {
-        
-       
-
+    return { 
     }
   }
-
 }
 
 </script>
-
 <template>
   <section style="z-index: 999;position: fixed;">
     <nav class="navbar navbar-expand-lg">
@@ -43,13 +38,10 @@ export default {
       </div>
     </nav>
   </section>
-
 </template>
 
 <style scoped>
-
 img{
   height: 90px;
 }
-
 </style>
