@@ -1,9 +1,10 @@
 <script>
-
+import myMovieList from '../store/MovieContent.js';
 export default {
    
    props :
     ["movies"]
+    
        
 
    
@@ -11,13 +12,27 @@ export default {
   ,
   data() {
     return {
+      myMovieList
         
 
     }
   },
-  // methods: {
-  //   ///
-  // },
+  methods: {
+    chose(img,title,vote,preview){
+			myMovieList.userSelect = img
+      myMovieList.userTitle = title
+      myMovieList.userVote = vote
+      myMovieList.userPreview = preview
+			console.log(img , title , vote)
+		},
+    magic(){
+      myMovieList.magic = "visible"
+      console.log("premuto magic", myMovieList.magic)
+      return myMovieList.magic
+      
+    }
+     
+   },
   // mounted: {
 
   // }
@@ -27,11 +42,12 @@ export default {
 </script>
 
 <template>
-  <div class="col-3 myCard text-center p-2">
-    <h5 class="col-12 p-2">
+  <div class="col-2 myCard text-center p-2" @click="chose(movies.backdrop_path,movies.title,movies.vote_average,movies.overview),magic()">
+   
+    <img class="col-12"  :src="`https://image.tmdb.org/t/p/original` + movies.poster_path" alt="">
+    <h5 class="col-12 p-2" style="font-size: 18px;">
       {{ movies.title }}
     </h5>
-    <img class="col-12"  :src="`https://image.tmdb.org/t/p/original` + movies.poster_path" alt="">
     <!-- <h5 class="col-12 p-2">
       <p>
         {{ movies.overview }}
@@ -47,7 +63,7 @@ export default {
 <style scoped>
 img{
   object-fit: contain;
-  height: 525px;
+  height:250px;
 }
 
 </style>

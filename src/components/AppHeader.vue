@@ -14,11 +14,11 @@ export default {
 </script>
 
 <template>
-  <section>
+  <section style="z-index: 999;position: fixed;">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-         <img  src="https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" alt="">
+         <img  src="http://www.serialthings.com/wp-content/uploads/2019/06/Netflix-Logo.png" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,11 +47,9 @@ export default {
 </template>
 
 <style scoped>
-nav{
-  background-color: rgb(17, 17, 17);
-}
+
 img{
-  height: 75px;
+  height: 90px;
 }
 
 </style>

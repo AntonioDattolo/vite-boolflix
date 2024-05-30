@@ -4,6 +4,11 @@ let myMovieList = reactive({
     movieTop:[],
     movieSearch:[],
     tvSeriesSearch:[],
-    userSearch: null
+    userSearch: null,
+    userSelect: "",
+    userTitle :"",
+    userVote :"",
+    userPreview :"",
+    magic: "invisible"
 })
 export default myMovieList
