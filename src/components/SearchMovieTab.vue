@@ -26,11 +26,10 @@ export default {
   // mounted: {
   // }
 }
-
 </script>
 
 <template>
-  <div class="col-3 myCard text-center p-2" @click="chose(movies.backdrop_path,movies.name,movies.vote_average,movies.overview)">
+  <div class="col-3 myCard text-center " @click="chose(movies.backdrop_path,movies.name,movies.vote_average,movies.overview)">
     <img class="col-12" :src="`https://image.tmdb.org/t/p/original` + movies.poster_path" alt="">
     <h3 class="col-12 p-2" style="font-size:18px">
       {{ movies.name }}
@@ -42,5 +41,8 @@ export default {
 img{
   object-fit: contain;
   height:250px;
+}
+div:hover{
+  filter: drop-shadow( 0 0 10px  rgb(248, 248, 248))
 }
 </style>

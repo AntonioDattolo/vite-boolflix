@@ -16,7 +16,7 @@ export default {
 <template>
     
    <input type="text" v-model="myMovieList.userSearch">
-    <button @click="$emit(this.searchMovie)" @key.upenter="this.searchMovie">CERCA</button>
+    <button @click="$emit(this.searchMovie)" @keyup.enter="this.searchMovie">CERCA</button>
 </template>
 
 <style scoped>

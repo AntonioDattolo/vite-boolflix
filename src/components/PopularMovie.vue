@@ -28,8 +28,8 @@ export default {
 </script>
 
 <template>
-  <div class="col-2 myCard text-center p-2" @click="chose(movies.backdrop_path,movies.title,movies.vote_average,movies.overview),magic()">
-    <img class="col-12"  :src="`https://image.tmdb.org/t/p/original` + movies.poster_path" alt="">
+  <div class="col-2 text-center p-2" @click="chose(movies.backdrop_path,movies.title,movies.vote_average,movies.overview),magic()">
+    <img class=""  :src="`https://image.tmdb.org/t/p/original` + movies.poster_path" alt="">
     <h5 class="col-12 p-2" style="font-size: 18px;">
       {{ movies.title }}
     </h5>
@@ -41,5 +41,7 @@ img{
   object-fit: contain;
   height:250px;
 }
-
+div:hover{
+  filter: drop-shadow( 0 0 10px  rgb(248, 248, 248))
+}
 </style>

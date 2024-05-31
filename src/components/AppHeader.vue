@@ -44,4 +44,11 @@ export default {
 img{
   height: 90px;
 }
+li:hover{
+  filter: drop-shadow( 0 0 10px  rgb(248, 248, 248));
+  border-bottom:1px solid white ;
+}
+img:hover{
+  filter: drop-shadow( 0 0 10px  rgb(248, 248, 248));
+}
 </style>
